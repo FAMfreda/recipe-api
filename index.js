@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from "mongoose"
 import recipeRouter from './routes/recipe.js';
+import categoryRouter from './routes/category.js';
 
 
 // connect to database
@@ -14,8 +15,11 @@ app.use(express.json());
 
 //use route
 app.use (recipeRouter);
+app.use(categoryRouter);
 
 //listen for incoming request
-app.listen(3000, () => {
-    console.log('app listening on port 3000')
+
+const port =process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`app listEning on port ${port}`)
 });
